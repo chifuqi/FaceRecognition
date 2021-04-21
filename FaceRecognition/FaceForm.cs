@@ -10,6 +10,10 @@ namespace FaceRecognition
     {
         private PictureCutter _pictureCutter;
         private RecongniseProxy _recongnise;
+
+        //测试
+        //C:\Users\chifuqi\Desktop\4. 民政局\测试数据-民政局
+        //C:\Users\chifuqi\Desktop\已识别
         public FaceFrom()
         {
 
@@ -19,7 +23,9 @@ namespace FaceRecognition
             Thread.CurrentThread.Name = "FACEFORM_THREAD";
 
             Console.WriteLine("Main-ThreadName: " + Thread.CurrentThread.Name);
+            TextBox.CheckForIllegalCrossThreadCalls = false;
         }
+
 
         private void btn_selected_Click(object sender, EventArgs e)
         {
@@ -53,21 +59,30 @@ namespace FaceRecognition
             }
             btn_search.Enabled = false;
 
+          
+            
+            Thread thread = new Thread(new ThreadStart(threadRun));
+            thread.Start();
+
+            //Thread.CurrentThread.Join();
+            thread.Join();
+            txtBox_log.AppendText("-----------------搜索结束-----------------");
+            btn_search.Enabled = true;
+        }
+
+        public void threadRun() {
             Context context = new Context(txtBox_selected.Text,
                 txtBox_stored.Text,
                 _pictureCutter,
                 _recongnise,
                 this);
 
-            context.execute();
-
-            txtBox_log.AppendText("-----------------搜索结束-----------------");
-            btn_search.Enabled = true;
+             context.execute();
         }
 
         public void appendText(String txt)
         {
-            txtBox_log.AppendText(txt);
+             txtBox_log.AppendText(txt);
         }
     }
 }

@@ -1,5 +1,5 @@
 Activate Result:90114
-Context-ThreadName: FACEFORM_THREAD
+Context-ThreadName: 
 i: 0
 cut前: 1656
 人脸识别开始: 1656
@@ -1771,8 +1771,9 @@ cut前: 1659
   ...人脸检测结束...
   ...人脸个数： 0
 人脸识别结束
+！！！！！！！！已跑完所有图片！！！！！！！！
 Activate Result:90114
-Context-ThreadName: FACEFORM_THREAD
+Context-ThreadName: 
 i: 0
 cut前: 1656
 人脸识别开始: 1656
@@ -3544,3 +3545,4 @@ cut前: 1659
   ...人脸检测结束...
   ...人脸个数： 0
 人脸识别结束
+！！！！！！！！已跑完所有图片！！！！！！！！

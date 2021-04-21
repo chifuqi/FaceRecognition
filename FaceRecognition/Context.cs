@@ -15,7 +15,7 @@ namespace FaceRecognition
     class Context
     {
         ILog logger = LogManager.GetLogger(typeof(Context));
-        private readonly int LINE_PRINT = 2;//每10行打印一次
+        //private readonly int LINE_PRINT = 2;//每10行打印一次
 
         //源被检索路径
         private String _sourcePath;
@@ -23,17 +23,17 @@ namespace FaceRecognition
         private String _desPath;
         private PictureCutter _cutter;
         private RecongniseProxy _recongnise;
-        private FaceFrom _form;
+        private FaceFrom _faceForm;
 
 
-        public Context(string sourcePath, string desPath, PictureCutter cutter, RecongniseProxy recongnise, FaceFrom form)
+        public Context(string sourcePath, string desPath, PictureCutter cutter, RecongniseProxy recongnise, FaceFrom faceForm)
         {
             _sourcePath = sourcePath;
             _desPath = desPath;
             _cutter = cutter;
             _recongnise = recongnise;
-            _form = form;
             _recongnise.InitEngines();
+            _faceForm = faceForm;
         }
 
         public void execute()
@@ -62,23 +62,25 @@ namespace FaceRecognition
                     if (searchedFace)
                     {
                         //识别出了人像
-                        //sbi++;
-                        //LogHelper.WriteLog(typeof(RecongniseProxy), );
+                        sbi++;
 
                         //sb.AppendLine(file.Name);
                         //if (sbi >= LINE_PRINT)
                         //{
                         //    sbi = 0;
-                        _form.appendText(file.Name + "\r\n");
+                        //    _form.appendText(file.Name + "\r\n");
                         //    sb.Clear();
                         //}
+                        _faceForm.appendText(file.Name + "\r\n");
 
                         File.Copy(file.FullName, _desPath + "\\" + file.Name, true);
 
                     }
                 }
             }
+            LogHelper.WriteLog(typeof(Context), "！！！！！！！！已跑完所有图片！！！！！！！！");
             //_form.appendText(sb.ToString());
+            //return sb.ToString();
 
         }
     }

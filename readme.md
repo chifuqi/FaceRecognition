@@ -1,5 +1,11 @@
 # 档案管理系统人脸识别
 
+| 版本 | 说明                                                         | 日期     |
+| ---- | ------------------------------------------------------------ | -------- |
+| V0.1 | 实现基本功能                                                 | 20210420 |
+| V0.2 | 1剥离出单独线程跑图片识别<br>2独立线程写入主线程TextBox，设置TextBox.CheckForIllegalCrossThreadCalls = false; | 20210420 |
+|      |                                                              |          |
+
 
 
 ### 1. 需求：
@@ -31,15 +37,17 @@ libarcsoft_face.dll
 V2.0版经验证不能有效的识别人脸
 ```
 
-![image-20210420190224506](assets/image-20210420190224506.png)
+<img src="assets/image-20210420190224506.png" alt="image-20210420190224506" style="zoom:67%;" />
 
 2. ####  因使用64位版本，因此需配置平台为64位版，否则将导致软件在运行过程中`闪退`
 
-![image-20210420185330808](assets/image-20210420185330808.png)
+`貌似改为x64后还有闪退问题，闪退问题一直未发现原因。`
+
+<img src="assets/image-20210420185330808.png" alt="image-20210420185330808" style="zoom:67%;" />
 
 
 
-![image-20210420185346119](assets/image-20210420185346119.png)
+<img src="assets/image-20210420185346119.png" alt="image-20210420185346119" style="zoom:67%;" />
 
 
 
@@ -50,4 +58,6 @@ V2.0版经验证不能有效的识别人脸
 2.  需安装windows framework4.6.1
 
 https://www.microsoft.com/zh-CN/download/details.aspx?id=49981
+
+3
 
